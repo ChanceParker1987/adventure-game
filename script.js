@@ -72,19 +72,23 @@ const gameContainer = document.getElementById("game-container");
 const questionContainer = document.getElementById("question");
 const answersContainer = document.getElementById("answers");
 
+function addAnswerButton(text, nextState) {
+    const button = document.createElement("button");
+    button.textContent = text;
+    button.classList.add("choice-btn");
+    button.onclick = () => {
+        currentState = nextState;
+        renderQuestion();
+    };
+    answersContainer.appendChild(button);
+}
+
 function renderQuestion() {
     const node = story[currentState];
     questionContainer.textContent = node.text;
     answersContainer.innerHTML = "";
     node.options.forEach(option => {
-        const button = document.createElement("button");
-        button.textContent = option.text;
-        button.classList.add("choice-btn");
-        button.onclick = () => {
-            currentState = option.next;
-            renderQuestion();
-        };
-        answersContainer.appendChild(button);
+        addAnswerButton(option.text, option.next);
     });
 }
 
@@ -107,4 +111,5 @@ function initializeUI() {
 
 // Start game
 initializeUI();
+
 
