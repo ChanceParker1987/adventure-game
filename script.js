@@ -1,4 +1,3 @@
-// Lord of the Rings Themed Story
 const story = {
     start: {
         text: "You are Frodo Baggins in the Shire. Gandalf arrives and warns you of the One Ring's danger. What do you do?",
@@ -22,7 +21,7 @@ const story = {
         text: "You enter the Mines of Moria. A Balrog appears! What do you do?",
         options: [
             { text: "Fight with Gandalf", next: "gandalf_falls" },
-            { text: "Fly! You Fools...", next: "escape_moria" }
+            { text: "Run towards the exit", next: "escape_moria" }
         ]
     },
     caradhras: {
@@ -33,10 +32,10 @@ const story = {
     gandalf_falls: {
         text: "Gandalf fights the Balrog and falls into the abyss. You escape and continue the quest.",
         options: [
-            { text: "Head to Lothlorien", next: "lothlorien" } ]
+            { text: "Head to Lothlórien", next: "lothlorien" } ]
     },
     escape_moria: {
-        text: "You escape Moria but are pursued by orcs. You reach Lothlorien for refuge.",
+        text: "You escape Moria but are pursued by orcs. You reach Lothlórien for refuge.",
         options: [
             { text: "Seek help from Galadriel", next: "lothlorien" } ]
     },
@@ -69,6 +68,7 @@ const story = {
 
 let currentState = "start";
 
+const gameContainer = document.getElementById("game-container");
 const questionContainer = document.getElementById("question");
 const answersContainer = document.getElementById("answers");
 
@@ -79,6 +79,7 @@ function renderQuestion() {
     node.options.forEach(option => {
         const button = document.createElement("button");
         button.textContent = option.text;
+        button.classList.add("choice-btn");
         button.onclick = () => {
             currentState = option.next;
             renderQuestion();
@@ -87,5 +88,23 @@ function renderQuestion() {
     });
 }
 
+function initializeUI() {
+    gameContainer.innerHTML = "";
+    const title = document.createElement("h1");
+    title.textContent = "Lord of the Rings Adventure";
+    gameContainer.appendChild(title);
+    
+    const questionDiv = document.createElement("div");
+    questionDiv.id = "question-container";
+    questionContainer.textContent = "Your journey begins in the Shire...";
+    questionDiv.appendChild(questionContainer);
+    gameContainer.appendChild(questionDiv);
+    
+    answersContainer.id = "answers";
+    gameContainer.appendChild(answersContainer);
+    renderQuestion();
+}
+
 // Start game
-renderQuestion();
+initializeUI();
+
