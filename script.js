@@ -21,7 +21,7 @@ const story = {
         text: "You enter the Mines of Moria. A Balrog appears! What do you do?",
         options: [
             { text: "Fight with Gandalf", next: "gandalf_falls" },
-            { text: "Run towards the exit", next: "escape_moria" }
+            { text: "Fly! You Fools!", next: "escape_moria" }
         ]
     },
     caradhras: {
@@ -32,10 +32,10 @@ const story = {
     gandalf_falls: {
         text: "Gandalf fights the Balrog and falls into the abyss. You escape and continue the quest.",
         options: [
-            { text: "Head to Lothlórien", next: "lothlorien" } ]
+            { text: "Head to Lothlorien", next: "lothlorien" } ]
     },
     escape_moria: {
-        text: "You escape Moria but are pursued by orcs. You reach Lothlórien for refuge.",
+        text: "You escape Moria but are pursued by orcs. You reach Lothlorien for refuge.",
         options: [
             { text: "Seek help from Galadriel", next: "lothlorien" } ]
     },
