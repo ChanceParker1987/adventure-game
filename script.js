@@ -93,14 +93,10 @@ function renderQuestion() {
     const node = story[currentState];
     questionContainer.textContent = node.text;
     answersContainer.innerHTML = "";
-    node.options.forEach(option => {
-        addAnswerButton(option.text, option.next);
-    });
+    node.options.forEach(option => addAnswerButton(option.text, option.next));
     setTimeout(() => {
         const firstButton = answersContainer.querySelector("button");
-        if (firstButton) {
-            firstButton.focus(); 
-        }
+        if (firstButton) firstButton.focus();
     }, 100);
 }
 
@@ -112,17 +108,16 @@ function initializeUI() {
     
     const questionDiv = document.createElement("div");
     questionDiv.id = "question-container";
-    questionContainer.textContent = "Your journey begins in the Shire...";
     questionDiv.appendChild(questionContainer);
     gameContainer.appendChild(questionDiv);
     
-    answersContainer.id = "answers";
     gameContainer.appendChild(answersContainer);
     renderQuestion();
 }
 
 // Start game
 initializeUI();
+
 
 
 
