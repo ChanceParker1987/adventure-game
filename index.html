@@ -7,19 +7,20 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
+    <header role="banner">
         <h1>Lord of the Rings Adventure</h1>
     </header>
-    <main id="game-container">
-        <section id="story">
-            <p id="question">Your journey begins in the Shire...</p>
+    <main id="game-container" role="main">
+        <section id="story" role="region" aria-labelledby="question">
+            <p id="question" role="text">Your journey begins in the Shire...</p>
         </section>
-        <section id="choices">
-            <div id="answers"></div>
+        <section id="choices" role="region" aria-labelledby="choices-label">
+            <h2 id="choices-label" class="visually-hidden">Your Choices</h2>
+            <div id="answers" role="list"></div>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2025 Adventure Game</p>
+    <footer role="contentinfo">
+        <p>&copy; 2025 Adventure Game by Chance Parker</p>
     </footer>
     <script src="script.js"></script>
 </body>

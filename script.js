@@ -76,9 +76,15 @@ function addAnswerButton(text, nextState) {
     const button = document.createElement("button");
     button.textContent = text;
     button.classList.add("choice-btn");
+    button.setAttribute("tabindex", "0"); 
     button.onclick = () => {
         currentState = nextState;
         renderQuestion();
+    };
+    button.onkeyup = (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            button.click();
+        }
     };
     answersContainer.appendChild(button);
 }
@@ -90,6 +96,12 @@ function renderQuestion() {
     node.options.forEach(option => {
         addAnswerButton(option.text, option.next);
     });
+    setTimeout(() => {
+        const firstButton = answersContainer.querySelector("button");
+        if (firstButton) {
+            firstButton.focus(); 
+        }
+    }, 100);
 }
 
 function initializeUI() {
@@ -111,5 +123,6 @@ function initializeUI() {
 
 // Start game
 initializeUI();
+
 
 
