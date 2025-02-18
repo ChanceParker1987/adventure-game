@@ -95,7 +95,7 @@ function renderQuestion() {
 function initializeUI() {
     gameContainer.innerHTML = "";
     const title = document.createElement("h1");
-    title.textContent = "Lord of the Rings Adventure";
+    title.textContent = "The Fellowship of the Ring";
     gameContainer.appendChild(title);
     
     const questionDiv = document.createElement("div");
